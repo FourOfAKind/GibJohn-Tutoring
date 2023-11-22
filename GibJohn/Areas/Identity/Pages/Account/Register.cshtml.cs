@@ -145,6 +145,7 @@ namespace GibJohn.Areas.Identity.Pages.Account
                 {
                     await _userManager.AddToRoleAsync(user, "Teacher");
                 }
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

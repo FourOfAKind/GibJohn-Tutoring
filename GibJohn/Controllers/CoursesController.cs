@@ -36,7 +36,7 @@ namespace GibJohn.Controllers
             }
 
             var course = await _context.Course
-                .FirstOrDefaultAsync(m => m.CourseID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (course == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace GibJohn.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseID,CourseName,CourseDescription,ImageURL")] Course course)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageURL")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -88,9 +88,9 @@ namespace GibJohn.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseID,CourseName,CourseDescription,ImageURL")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageURL")] Course course)
         {
-            if (id != course.CourseID)
+            if (id != course.Id)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace GibJohn.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CourseExists(course.CourseID))
+                    if (!CourseExists(course.Id))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace GibJohn.Controllers
             }
 
             var course = await _context.Course
-                .FirstOrDefaultAsync(m => m.CourseID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (course == null)
             {
                 return NotFound();
@@ -157,7 +157,7 @@ namespace GibJohn.Controllers
 
         private bool CourseExists(int id)
         {
-          return (_context.Course?.Any(e => e.CourseID == id)).GetValueOrDefault();
+          return (_context.Course?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

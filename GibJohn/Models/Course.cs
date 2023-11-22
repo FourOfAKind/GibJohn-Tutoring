@@ -1,16 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 
 namespace GibJohn.Models
 {
     public class Course
     {
-
-        public int CourseID { get; set; }
-        [StringLength(50, ErrorMessage = "Must be between 2 and 50 characters", MinimumLength = 2)]
-        public string CourseName { get; set; }
-        public string CourseDescription { get; set; }
+        [Key]
+        public int Id{ get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 2)]
+        public string Name { get; set; }
+        [Required]
+        [StringLength(250, MinimumLength = 2)]
+        public string Description { get; set; }
         public string ImageURL { get; set; }
 
-        public Course() { }
+        Course() { }
     }
 }

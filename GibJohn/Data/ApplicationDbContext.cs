@@ -21,6 +21,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<GibJohn.Models.Course>? Course { get; set; }
+    public DbSet<GibJohn.Models.Registration>? Registration { get; set; }
 
 }
 
@@ -31,4 +32,5 @@ public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<Appli
         builder.Property(u => u.FirstName).HasMaxLength(20);
         builder.Property(u => u.LastName).HasMaxLength(20);
     }
+
 }

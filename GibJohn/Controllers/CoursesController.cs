@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GibJohn.Data;
 using GibJohn.Models;
+using System.Security.Claims;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace GibJohn.Controllers
 {
@@ -26,6 +28,14 @@ namespace GibJohn.Controllers
                           View(await _context.Course.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Course'  is null.");
         }
+
+        // GET: Courses
+        /*public async Task<IActionResult> MyCourses()
+        {
+            return _context.Course != null ?
+                        View(await _context.Registration.Where(r => r.CourseID == eventId)) :
+                        Problem("Entity set 'ApplicationDbContext.Course'  is null.");
+        }*/
 
         // GET: Courses/Details/5
         public async Task<IActionResult> Details(int? id)

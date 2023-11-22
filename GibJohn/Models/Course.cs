@@ -17,6 +17,6 @@ namespace GibJohn.Models
         public string Description { get; set; }
         public string ImageURL { get; set; }
 
-        Course() { }
+        public Course() { }
     }
 }

@@ -9,6 +9,7 @@ using GibJohn.Data;
 using GibJohn.Models;
 using System.Security.Claims;
 using Microsoft.Extensions.Configuration.UserSecrets;
+using Microsoft.Win32;
 
 namespace GibJohn.Controllers
 {
@@ -22,7 +23,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> AllCourses()
         {
               return _context.Course != null ? 
                           View(await _context.Course.ToListAsync()) :
@@ -38,6 +39,7 @@ namespace GibJohn.Controllers
         }*/
 
         // GET: Courses/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Course == null)
@@ -72,7 +74,7 @@ namespace GibJohn.Controllers
             {
                 _context.Add(course);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("AllCourses");
             }
             return View(course);
         }
@@ -168,6 +170,39 @@ namespace GibJohn.Controllers
         private bool CourseExists(int id)
         {
           return (_context.Course?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterForCourse(IFormCollection collection)
+        {
+            int courseId = int.Parse(collection["id"].ToString());
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // make sure event exists
+            Course? courseModel = await _context.Course.FirstOrDefaultAsync(e => e.Id == courseId);
+            if (courseModel == null)
+            {
+                return NotFound();
+            }
+
+            // Check if a registration for the current user and event already exists
+            var existingRegistration = _context.Registration.FirstOrDefault(r => r.CourseId == courseId && r.UserId == userId);
+            if (existingRegistration != null)
+            {
+                // Already registered
+                return RedirectToAction("Index", "Home");
+            }
+
+            var eventRegistration = new Registration
+            {
+                CourseId = courseId,
+                UserId = userId,
+                Date = DateTime.Now.ToString(),
+            };
+
+            _context.Registration.Add(eventRegistration);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("AllCourses", "Courses");
         }
     }
 }

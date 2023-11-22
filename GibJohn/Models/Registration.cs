@@ -7,6 +7,7 @@ namespace GibJohn.Models
     public class Registration
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int CourseId { get; set; }
         public string UserId { get; set; }

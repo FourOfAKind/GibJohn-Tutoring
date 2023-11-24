@@ -9,26 +9,26 @@
     ViewData["Title"] = "Index";
 }
 
-
-
-<h1>Index</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
 
+<!---Check if theres any data--->
 @if (Model != null)
 {
+    <h1 class="text-center">All Courses</h1>
     <p class="text-center">View our courses below!</p>
 
+// Container which arranges the courses into a grid
 <div class="container-fluid courses">
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-lg-4 col-md-6 col-sm-12 spacing">
-                <div class="card" style="width: 28rem;">
-                    <img class="card-img-top" src="@(item.ImageURL ?? "https://openclipart.org/image/2400px/svg_to_png/159463/open-book-grey.png")" alt="Card image cap" style="height: 12rem;">
+            <div class="col-lg-3 col-md-6 col-sm-12 spacing">
+                <div class="card" style="width: 22rem;">
+                    <!--Check if there's an image set, if not set it to spaceholder image-->
+                    <img class="card-img-top" src="@(item.ImageURL ?? "https://openclipart.org/image/2400px/svg_to_png/159463/open-book-grey.png")" alt="Card image cap" style="height: 11rem;">
                     <div class="card-body">
                         <h5 class="card-title">@item.Name</h5>
                         <p class="card-text">@item.Description</p>
@@ -36,6 +36,7 @@
                             var existingRegistration = DbContext.Registration.FirstOrDefault(r => r.CourseId == @item.Id && r.UserId == userId);
                         }
                         <form asp-action="RegisterForCourse" asp-controller="Courses" method="post">
+                            <!--If user hasn't already registered, post the courseID to the server, add user to DB, and disable register button-->
                             <input type="hidden" name="id" value="@item.Id" />
                             @if (existingRegistration != null)
                             {

@@ -30,13 +30,23 @@ namespace GibJohn.Controllers
                           Problem("Entity set 'ApplicationDbContext.Course'  is null.");
         }
 
-        // GET: Courses
-        /*public async Task<IActionResult> MyCourses()
+        public async Task<IActionResult> MyCourses()
         {
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var courseIds = await _context.Registration
+                .Where(r => r.UserId == userId)
+                .Select(r => r.CourseId)
+                .ToListAsync();
+
+            var courses = await _context.Course
+                .Where(c => courseIds.Contains(c.Id))
+                .ToListAsync();
+
             return _context.Course != null ?
-                        View(await _context.Registration.Where(r => r.CourseID == eventId)) :
-                        Problem("Entity set 'ApplicationDbContext.Course'  is null.");
-        }*/
+                View(courses) :
+                Problem("Yeah");
+        }
 
         // GET: Courses/Details/5
 

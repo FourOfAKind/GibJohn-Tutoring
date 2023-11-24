@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
@@ -15,7 +16,8 @@ namespace GibJohn.Models
         [Required]
         [StringLength(250, MinimumLength = 2)]
         public string Description { get; set; }
-        public string ImageURL { get; set; }
+        [AllowNull]
+        public string? ImageURL { get; set; }
 
         public Course() { }
     }

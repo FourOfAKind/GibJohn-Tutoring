@@ -9,16 +9,11 @@
     ViewData["Title"] = "Index";
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-
 <!---Check if theres any data--->
 @if (Model != null)
 {
-    <h1 class="text-center">All Courses</h1>
-    <p class="text-center">View our courses below!</p>
+    <h1 class="text-center">My Courses</h1>
+    <p class="text-center">View your courses below!</p>
 
     // Container which arranges the courses into a grid
     <div class="container-fluid courses">
@@ -41,6 +36,6 @@
 }
 else
 {
-    <p class="text-center">No available Courses</p>
+    <p class="text-center">You haven't signed up for any courses yet!</p>
 }
 

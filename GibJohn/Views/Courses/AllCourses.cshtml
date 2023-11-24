@@ -22,11 +22,11 @@
 {
     <p class="text-center">View our courses below!</p>
 
-    <div class="d-flex flex-row justify-content-around container-fluid upcoming-hackathons">
+    <div class="d-flex flex-row justify-content-around container-fluid">
         @foreach (var item in Model)
         {
-            <div class="card bg-secondary" style="width: 24rem;">
-                <img class="card-img-top" src="@(item.ImageURL ?? "https://openclipart.org/image/2400px/svg_to_png/159463/open-book-grey.png")" alt="Card image cap" style="height: 8rem;">
+            <div class="card" style="width: 28rem;">
+                <img class="card-img-top" src="@(item.ImageURL ?? "https://openclipart.org/image/2400px/svg_to_png/159463/open-book-grey.png")" alt="Card image cap" style="height: 12rem;">
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
                     <p class="card-text">@item.Description</p>
@@ -43,11 +43,7 @@
                         {
                             <button type="submit" class="w-100 btn btn-lg btn-primary">Join</button>
                         }
-
-
                     </form>
-
-
                 </div>
             </div>
         }

@@ -46,10 +46,13 @@ namespace GibJohn.Controllers
         }
 
         // GET: Notes/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+            public IActionResult Create()
+            {
+                var courses = _context.Course.ToList(); // Assuming you have a DbContext named 'db'
+                ViewBag.Courses = new SelectList(courses, "Id", "Name");
+
+                return View();
+            }
 
         // POST: Notes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

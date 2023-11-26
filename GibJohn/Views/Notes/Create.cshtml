@@ -13,9 +13,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CourseId" class="control-label"></label>
-                <input asp-for="CourseId" class="form-control" />
-                <span asp-validation-for="CourseId" class="text-danger"></span>
+                @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.CourseId, (SelectList)ViewBag.Courses, "-- Select Course --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
                 <label asp-for="Topic" class="control-label"></label>

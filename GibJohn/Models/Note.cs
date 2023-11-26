@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GibJohn.Models
 {
@@ -7,6 +8,8 @@ namespace GibJohn.Models
         public int Id { get; set; }
         [Required]
         public int CourseId { get; set; }
+        [ForeignKey("CourseId")]
+        public Course Course { get; set; }
         [Required]
         [StringLength(50, ErrorMessage = "Must be between 5 and 50 characters.", MinimumLength = 5)]
         public string Topic { get; set; }

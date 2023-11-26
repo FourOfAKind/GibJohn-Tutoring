@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GibJohn.Data;
 using GibJohn.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace GibJohn.Controllers
 {
@@ -61,6 +62,9 @@ namespace GibJohn.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,CourseId,Topic,Notes")] Note note)
         {
+            note.Course = _context.Course.Where(c => c.Id == note.CourseId).ToList()[0];
+            ModelState.Clear();
+            TryValidateModel(note, nameof(Note));
             if (ModelState.IsValid)
             {
                 _context.Add(note);

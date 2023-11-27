@@ -133,22 +133,20 @@ namespace GibJohn.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                // Retrieve the selected role from the radio buttons
-                string role = Request.Form["role"];
-
-                // Process the selected role
-                if (role == "student")
-                {
-                    await _userManager.AddToRoleAsync(user, "Student");
-                }
-                else if (role == "teacher")
-                {
-                    await _userManager.AddToRoleAsync(user, "Teacher");
-                }
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    string role = Request.Form["role"];
+                    if (role == "student")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Student");
+                    }
+                    else if (role == "teacher")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Teacher");
+                    }
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

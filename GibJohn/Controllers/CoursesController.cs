@@ -212,7 +212,7 @@ namespace GibJohn.Controllers
 
             _context.Registration.Add(eventRegistration);
             await _context.SaveChangesAsync();
-            return RedirectToAction("AllCourses", "Courses");
+            return RedirectToAction("Index", "Courses");
         }
     }
 }

@@ -23,7 +23,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses
-        public async Task<IActionResult> AllCourses()
+        public async Task<IActionResult> Index()
         {
               return _context.Course != null ? 
                           View(await _context.Course.ToListAsync()) :

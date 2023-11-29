@@ -84,7 +84,7 @@ namespace GibJohn.Controllers
             {
                 _context.Add(course);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("AllCourses");
+                return RedirectToAction("Index");
             }
             return View(course);
         }

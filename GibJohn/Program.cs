@@ -9,6 +9,7 @@ namespace GibJohn
     {
         public static async Task Main(string[] args)
         {
+            // Initialises the database and configures application
             var builder = WebApplication.CreateBuilder(args);
                         var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
 
@@ -32,6 +33,8 @@ namespace GibJohn
                 app.UseHsts();
             }
 
+
+            // Adds all the needed services and options to the program
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -46,6 +49,7 @@ namespace GibJohn
             
             app.MapRazorPages();
 
+            // Check if the role already exists, if not create the roles
             using (var scope = app.Services.CreateScope())
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();

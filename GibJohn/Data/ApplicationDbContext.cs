@@ -24,7 +24,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<GibJohn.Models.Course>? Course { get; set; }
     public DbSet<GibJohn.Models.Registration>? Registration { get; set; }
     public DbSet<GibJohn.Models.Note>? Note { get; set; }
-
 }
 
 public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>

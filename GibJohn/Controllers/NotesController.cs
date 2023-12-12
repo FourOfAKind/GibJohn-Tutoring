@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GibJohn.Data;
 using GibJohn.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Security.Claims;
 
 namespace GibJohn.Controllers
 {
@@ -23,9 +24,20 @@ namespace GibJohn.Controllers
         // GET: Notes
         public async Task<IActionResult> Index()
         {
-              return _context.Note != null ? 
-                          View(await _context.Note.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Note'  is null.");
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var courseIds = await _context.Registration
+                .Where(r => r.UserId == userId)
+                .Select(r => r.CourseId)
+                .ToListAsync();
+
+            var courses = await _context.Note
+                .Where(c => courseIds.Contains(c.Id))
+                .ToListAsync();
+
+            return _context.Course != null ?
+                View(courses) :
+                Problem("Yeah");
         }
 
         // GET: Notes/Details/5

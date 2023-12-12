@@ -13,7 +13,6 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-
 <!---Check if theres any data--->
 @if (Model != null)
 {
@@ -39,7 +38,7 @@
                                 <input type="hidden" name="id" value="@item.Id" />
                                 @if (existingRegistration != null)
                                 {
-                                    <button type="submit" class="w-100 btn btn-lg disabled btn-primary" disabled>Already Enrolled!</button>
+                                    <button class="w-100 btn btn-lg disabled btn-primary" disabled>Already Enrolled!</button>
                                 }
                                 else
                                 {

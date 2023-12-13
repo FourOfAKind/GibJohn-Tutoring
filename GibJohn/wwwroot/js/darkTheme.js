@@ -1,4 +1,4 @@
-﻿function darkTheme() {
+function darkTheme() {
     document.documentElement.setAttribute("data-bs-theme", "dark");
 }
 

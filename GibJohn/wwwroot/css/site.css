@@ -27,3 +27,7 @@ body {
 .spacing {
     margin-right: 3%;
 }
+
+a:visited {
+    text-decoration: none;
+}

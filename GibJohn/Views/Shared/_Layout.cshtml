@@ -1,9 +1,11 @@
 ﻿@using GibJohn.Areas.Identity.Data;
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
-
+@{
+    string theme = "dark";
+}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme=@theme>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,6 +33,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-primary" data-bs-toggle="theme" data-bs-theme="dark">Dark Theme</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-primary" data-bs-toggle="theme" data-bs-theme="light">Light Theme</button>
                         </li>
                     </ul>
                 </div>

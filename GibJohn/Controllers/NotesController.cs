@@ -54,7 +54,7 @@ namespace GibJohn.Controllers
             {
                 return NotFound();
             }
-
+            IncrementCounter();
             return View(note);
         }
 
@@ -174,6 +174,17 @@ namespace GibJohn.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        private async void IncrementCounter()
+        {
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                user.SessionsCompleted++;
+                _context.SaveChanges();
+            }
+
+        }
         private bool NoteExists(int id)
         {
           return (_context.Note?.Any(e => e.Id == id)).GetValueOrDefault();

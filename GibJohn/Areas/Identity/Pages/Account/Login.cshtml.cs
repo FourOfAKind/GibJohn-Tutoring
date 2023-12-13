@@ -124,13 +124,14 @@ namespace GibJohn.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
 
-                    var user = await _userManager.FindByNameAsync(Input.Email);
+/*                    var user = await _userManager.FindByNameAsync(Input.Email);
 
                     if (user != null)
                     {
                         user.SessionsCompleted++;
                         _context.SaveChanges();
                     }
+*/
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

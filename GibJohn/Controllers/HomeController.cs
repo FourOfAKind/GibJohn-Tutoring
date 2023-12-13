@@ -28,6 +28,11 @@ namespace GibJohn.Controllers
             return View();
         }
 
+        public IActionResult ShowSearchForm()
+        {
+            return View()
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -36,10 +41,11 @@ namespace GibJohn.Controllers
 
         public async Task<IActionResult> ShowSearchResult(String SearchPhrase)
         {
-            return View(await _context.Users
+            var userDetails = await _context.Users
                 .Where(u => u.Id == SearchPhrase)
-                .Select(u => new {u.FirstName, u.LastName})
-                .ToListAsync());
+                .Select(u => new {u.FirstName, u.LastName, u.SessionsCompleted})
+                .ToListAsync();
+            return View(userDetails);
         }
     }
 }

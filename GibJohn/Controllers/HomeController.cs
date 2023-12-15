@@ -30,7 +30,7 @@ namespace GibJohn.Controllers
 
         public IActionResult ShowSearchForm()
         {
-            return View()
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

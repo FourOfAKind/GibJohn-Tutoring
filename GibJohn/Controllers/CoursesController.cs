@@ -219,7 +219,7 @@ namespace GibJohn.Controllers
         public async Task<IActionResult> ShowSearchResult(String SearchPhrase)
         {
             var userDetails = await _context.Users.Where(u => u.Id == SearchPhrase)
-                .Select(u => new {u.FirstName, u.LastName, u.SessionsCompleted})
+                .Select(u => new {u.FirstName, u.LastName})
                 .ToListAsync();
             ViewBag.UserDetails = userDetails;
             return View();

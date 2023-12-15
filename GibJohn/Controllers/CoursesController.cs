@@ -24,6 +24,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses
+        [Authorize(Roles = "Student,Management")]
         public async Task<IActionResult> Index()
         {
               return _context.Course != null ? 
@@ -51,6 +52,8 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses/Create
+        [Authorize(Roles = "Management")]
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -73,6 +76,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses/Edit/5
+        [Authorize(Roles = "Management")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Course == null)
@@ -124,6 +128,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses/Delete/5
+        [Authorize(Roles = "Management")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Course == null)
@@ -166,6 +171,7 @@ namespace GibJohn.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Student")]
         public async Task<IActionResult> RegisterForCourse(IFormCollection collection)
         {
             int courseId = int.Parse(collection["id"].ToString());

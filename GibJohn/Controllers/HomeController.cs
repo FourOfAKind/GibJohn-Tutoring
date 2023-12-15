@@ -43,9 +43,17 @@ namespace GibJohn.Controllers
         {
             var userDetails = await _context.Users
                 .Where(u => u.Id == SearchPhrase)
-                .Select(u => new {u.FirstName, u.LastName, u.SessionsCompleted})
-                .ToListAsync();
-            return View(userDetails);
+                .Select(u => new {FirstName = u.FirstName, LastName = u.LastName, SessionsCompleted = u.SessionsCompleted, StudentID = SearchPhrase})
+                .FirstOrDefaultAsync();
+            if (userDetails != null)
+            {
+                ViewBag.UserDetails = userDetails;
+                return View();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

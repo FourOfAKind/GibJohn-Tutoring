@@ -10,6 +10,7 @@ using GibJohn.Models;
 using System.Security.Claims;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.Win32;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GibJohn.Controllers
 {
@@ -23,6 +24,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses
+        [Authorize(Roles = "Student,Management")]
         public async Task<IActionResult> Index()
         {
               return _context.Course != null ? 
@@ -30,6 +32,7 @@ namespace GibJohn.Controllers
                           Problem("Entity set 'ApplicationDbContext.Course'  is null.");
         }
 
+        [Authorize(Roles = "Student")]
         public async Task<IActionResult> MyCourses()
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -49,26 +52,9 @@ namespace GibJohn.Controllers
                 Problem("Yeah");
         }
 
-        // GET: Courses/Details/5
-
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Course == null)
-            {
-                return NotFound();
-            }
-
-            var course = await _context.Course
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            return View(course);
-        }
-
         // GET: Courses/Create
+        [Authorize(Roles = "Management")]
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -91,6 +77,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses/Edit/5
+        [Authorize(Roles = "Management")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Course == null)
@@ -142,6 +129,7 @@ namespace GibJohn.Controllers
         }
 
         // GET: Courses/Delete/5
+        [Authorize(Roles = "Management")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Course == null)
@@ -184,6 +172,7 @@ namespace GibJohn.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Student")]
         public async Task<IActionResult> RegisterForCourse(IFormCollection collection)
         {
             int courseId = int.Parse(collection["id"].ToString());
@@ -216,15 +205,7 @@ namespace GibJohn.Controllers
             return RedirectToAction("Index", "Courses");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ShowSearchResult(String SearchPhrase)
-        {
-            var userDetails = await _context.Users.Where(u => u.Id == SearchPhrase)
-                .Select(u => new {u.FirstName, u.LastName, u.SessionsCompleted})
-                .ToListAsync();
-            ViewBag.UserDetails = userDetails;
-            return View();
-        }
+
 
     }
 }

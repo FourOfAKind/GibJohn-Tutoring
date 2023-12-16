@@ -36,10 +36,10 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link btn" onclick="darkTheme()">Dark Theme</button>
+                            <button class="nav-link btn" onclick="setTheme('dark');">Dark Theme</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link btn" onclick="lightTheme()">Light Theme</button>
+                            <button class="nav-link btn" onclick="setTheme('light');">Light Theme</button>
                         </li>
                     </ul>
                 </div>
@@ -62,5 +62,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        applyTheme();
+    </script>
 </body>
 </html>

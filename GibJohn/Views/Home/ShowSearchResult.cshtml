@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "ShowSearchResult";
+    var student = ViewBag.UserDetails;
+}
+
+<!--Display student details which have been retrieved from the controller-->
+<div class="text-center">
+    <h2>Showing results for student ID @student.StudentID</h2>
+    <h4>Name: @student.FirstName @student.LastName</h4>
+    <h4>Notes Viewed: @student.SessionsCompleted</h4>
+</div>

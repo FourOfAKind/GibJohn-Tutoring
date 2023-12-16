@@ -34,7 +34,8 @@ namespace GibJohn.Controllers
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var courseIds = await _context.Registration
+            var courseIds = await 
+                _context.Registration
                 .Where(r => r.UserId == userId)
                 .Select(r => r.CourseId)
                 .ToListAsync();

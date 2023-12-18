@@ -81,7 +81,7 @@ namespace GibJohn.Controllers
             {
                 _context.Add(note);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(note);
         }

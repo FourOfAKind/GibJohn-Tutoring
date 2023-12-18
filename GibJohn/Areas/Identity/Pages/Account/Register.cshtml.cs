@@ -147,6 +147,10 @@ namespace GibJohn.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, "Teacher");
                     }
+                    else if (role == "management")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Management");
+                    }
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

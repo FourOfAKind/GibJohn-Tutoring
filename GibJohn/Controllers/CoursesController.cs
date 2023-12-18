@@ -71,7 +71,8 @@ namespace GibJohn.Controllers
             {
                 _context.Add(course);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                // redirects to dashboard
+                return RedirectToAction("Index", "Home");
             }
             return View(course);
         }

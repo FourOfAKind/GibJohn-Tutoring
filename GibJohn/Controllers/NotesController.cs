@@ -113,7 +113,7 @@ namespace GibJohn.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CourseId,Topic,Notes")] Note note)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CourseId,Topic,Notes,Video")] Note note)
         {
             if (id != note.Id)
             {

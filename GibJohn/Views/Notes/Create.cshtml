@@ -15,7 +15,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label" })
                 <!--Adds a dropdown list which shows the course name and gets the courseid for selected value -->
-                @Html.DropDownListFor(model => model.CourseId, (SelectList)ViewBag.Courses, "-- Select Course --", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.CourseId, (IEnumerable<SelectListItem>)ViewBag.Courses, "-- Select Course --", new { @class = "form-control" })
                 <!--Adds validation to the dropdown list in case user keeps the default option-->
                 @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
             </div>
@@ -28,6 +28,11 @@
                 <label asp-for="Notes" class="control-label"></label>
                 <textarea asp-for="Notes" class="form-control" style="height: 20rem;"></textarea>
                 <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Video" class="control-label"></label>
+                <input asp-for="Video" class="form-control" />
+                <span asp-validation-for="Video" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

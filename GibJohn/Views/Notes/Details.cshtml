@@ -28,6 +28,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Notes)
         </dd>
+        <dd class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Video)
+        </dd>
+        <dd class="col-sm-10">
+            <iframe width="560" height="315" src=@Model.Video title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </dd>
     </dl>
 </div>
 <div>

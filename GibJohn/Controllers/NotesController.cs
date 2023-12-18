@@ -32,8 +32,11 @@ namespace GibJohn.Controllers
                 .ToListAsync();
 
             var courses = await _context.Note
-                .Where(c => courseIds.Contains(c.Id))
+                .Where(c => courseIds.Contains(c.CourseId))
                 .ToListAsync();
+
+            Console.WriteLine(courses.Count);
+            Console.WriteLine(courses);
 
             return _context.Course != null ?
                 View(courses) :
@@ -62,9 +65,10 @@ namespace GibJohn.Controllers
             public IActionResult Create()
             {
                 var courses = _context.Course.ToList(); // Assuming you have a DbContext named 'db'
-                ViewBag.Courses = new SelectList(courses, "Id", "Name");
+                ViewBag.Courses = courses.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name }).ToList();
 
-                return View();
+
+            return View();
             }
 
         // POST: Notes/Create
@@ -72,7 +76,7 @@ namespace GibJohn.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CourseId,Topic,Notes")] Note note)
+        public async Task<IActionResult> Create([Bind("Id,CourseId,Topic,Notes,Video")] Note note)
         {
             note.Course = _context.Course.Where(c => c.Id == note.CourseId).ToList()[0];
             ModelState.Clear();
@@ -83,6 +87,8 @@ namespace GibJohn.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
+            var courses = _context.Course.ToList(); // Assuming you have a DbContext named 'db'
+            ViewBag.Courses = courses.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name }).ToList();
             return View(note);
         }
 

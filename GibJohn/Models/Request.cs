@@ -6,6 +6,7 @@ namespace GibJohn.Models
 {
     public class Request
     {
+        // Defines all the properties which need to be stored for Requested Courses which teachers can submit, their constraints and their data types.
         public int Id { get; set; }
         [Required]
         [StringLength(50, ErrorMessage = "Must be between 5 and 50 characters.", MinimumLength = 5)]

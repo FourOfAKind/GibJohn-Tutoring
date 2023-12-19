@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 
 namespace GibJohn.Models
 {
+    // Defines all the properties which need to be stored for Courses which employees can submit, their constraints and their data types.
     public class Course
     {
         [Key]

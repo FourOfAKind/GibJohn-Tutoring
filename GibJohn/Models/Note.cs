@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GibJohn.Models
 {
+    // Defines all the properties which need to be stored for Notes which employees can submit, their constraints and their data types.
     public class Note
     {
         public int Id { get; set; }

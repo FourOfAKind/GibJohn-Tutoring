@@ -30,7 +30,7 @@
                     <img class="card-img-top" src="@(item.ImageURL ?? "https://openclipart.org/image/2400px/svg_to_png/159463/open-book-grey.png")" alt="Card image cap" style="height: 11rem;">
                     <div class="card-body">
                         <h5 class="card-title">@item.Name</h5>
-                            <p class="card-text">@item.Description</p> @{
+                            <p class="card-text" style="height: 3rem;">@item.Description</p> @{
                                 var existingRegistration = DbContext.Registration.FirstOrDefault(r => r.CourseId == @item.Id && r.UserId == userId);
                             }
                             <form asp-action="RegisterForCourse" asp-controller="Courses" method="post">

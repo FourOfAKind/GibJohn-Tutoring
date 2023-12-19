@@ -19,24 +19,32 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Add Quizzes</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a onclick="alert('This feature has not been implemented yet. ');" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">Allows for quizzes to be added for students to view and attempt.</p>
+                        <a onclick="alert('This feature has not been implemented yet. ');" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--Add notes option-->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Add Notes</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a asp-controller="Notes" asp-action="Create" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">Allows for notes to be added for enrolled students to view.</p>
+                        <a asp-controller="Notes" asp-action="Create" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--Add courses option-->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Add Courses</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a asp-controller="Courses" asp-action="Create" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">Allows for courses to be added for students to view and join.</p>
+                        <a asp-controller="Courses" asp-action="Create" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+                <!--View requested courses option-->
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Courses</h5>
+                        <p class="card-text">Shows the courses that teachers have requested to be added.</p>
+                        <a asp-controller="Requests" asp-action="Index" class="btn btn-primary">Go</a>
                     </div>
                 </div>
         }
@@ -48,24 +56,24 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Find Student</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a asp-controller="Home" asp-action="ShowSearchForm" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">Allows students to be searched by their user ID and shows the amount of notes viewed.</p>
+                        <a asp-controller="Home" asp-action="ShowSearchForm" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--Dashboard option-->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Dashboard</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a onclick="alert('This feature has not been implemented yet. ');" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">A page which shows all tracked students' metrics on graphs and tables.</p>
+                        <a onclick="alert('This feature has not been implemented yet. ');" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--Request course option-->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Request Course</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a asp-controller="Requests" asp-action="Create" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">Is this website missing a course which you teach or need? Submit it here.</p>
+                        <a asp-controller="Requests" asp-action="Create" class="btn btn-primary">Go</a>
                     </div>
                 </div>
              
@@ -78,31 +86,31 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Find Courses</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a asp-controller="Courses" asp-action="Index" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">View our available courses and join courses which you are in.</p>
+                        <a asp-controller="Courses" asp-action="Index" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--My courses option-->
                 <div class="card" style="width: 18rem;">
                      <div class="card-body">
                         <h5 class="card-title">My Courses</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a asp-controller="Courses" asp-action="MyCourses" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">View the courses that you have already joined.</p>
+                        <a asp-controller="Courses" asp-action="MyCourses" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--Notes option-->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Notes</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a asp-controller="Notes" asp-action="Index" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">View notes related to the courses which you have joined.</p>
+                        <a asp-controller="Notes" asp-action="Index" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--Quizzes option-->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Quizzes</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Take quizzes and tests related to the courses which you have joined.</p>
                         <a onclick="alert('This feature has not been implemented yet. ');" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>

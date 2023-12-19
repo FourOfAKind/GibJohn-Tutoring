@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GibJohn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231219195728_yeah")]
+    [Migration("20231219203521_yeah")]
     partial class yeah
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

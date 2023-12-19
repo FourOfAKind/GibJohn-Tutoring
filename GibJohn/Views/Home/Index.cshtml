@@ -15,6 +15,14 @@
         else if (User.IsInRole("Management"))
         {
             <!---ADMIN DASHBOARD--->
+                <!--Add courses option-->
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Courses</h5>
+                        <p class="card-text">Allows for courses to be added for students to view and join.</p>
+                        <a asp-controller="Courses" asp-action="Create" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
                 <!--Add quizzes option-->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
@@ -29,14 +37,6 @@
                         <h5 class="card-title">Add Notes</h5>
                         <p class="card-text">Allows for notes to be added for enrolled students to view.</p>
                         <a asp-controller="Notes" asp-action="Create" class="btn btn-primary">Go</a>
-                    </div>
-                </div>
-                <!--Add courses option-->
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Add Courses</h5>
-                        <p class="card-text">Allows for courses to be added for students to view and join.</p>
-                        <a asp-controller="Courses" asp-action="Create" class="btn btn-primary">Go</a>
                     </div>
                 </div>
                 <!--View requested courses option-->

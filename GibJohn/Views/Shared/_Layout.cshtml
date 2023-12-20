@@ -4,6 +4,7 @@
 @{
     string theme = "dark";
 }
+<!--This page will be rendered on the top of every page, effectively making it a navbar-->
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme=@theme>
@@ -30,7 +31,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

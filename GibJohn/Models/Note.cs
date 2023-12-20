@@ -19,7 +19,6 @@ namespace GibJohn.Models
         [StringLength(2000, ErrorMessage = "Must be between 5 and 250 characters.", MinimumLength = 5)]
         public string Notes { get; set; }
         [StringLength(150, ErrorMessage = "Must be between 15 and 150 characters.", MinimumLength = 15)]
-        [AllowNull]
         public string? Video { get; set; }
     }
 }

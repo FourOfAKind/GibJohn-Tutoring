@@ -1,25 +1,18 @@
-﻿function setTheme(theme) {
-    localStorage.setItem("theme", theme);
+﻿function setTheme() {
+    let currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
     applyTheme();
 }
 
-function getTheme() {
-    let currentTheme;
-    if (localStorage.length === 0) {
-        currentTheme = setTheme("dark");
-    } else {
-        currentTheme = localStorage.getItem('theme');
-    }
-    return currentTheme;
-
-}
-
 function applyTheme() {
-    var theme = getTheme();
-    if (theme === "light") {
+    var theme = localStorage.getItem('theme');
+    if (theme === 'light') {
         document.documentElement.setAttribute('data-bs-theme', 'light');
-    }
-    else if (theme === "dark") {
+    } else if (theme === 'dark') {
         document.documentElement.setAttribute('data-bs-theme', 'dark');
     }
 }

@@ -1,5 +1,5 @@
 ﻿function setTheme() {
-    let currentTheme = localStorage.getItem('theme');
+    var currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'light') {
         localStorage.setItem('theme', 'dark');
     } else {

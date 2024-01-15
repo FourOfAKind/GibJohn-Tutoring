@@ -32,3 +32,17 @@ body {
 a:visited {
     text-decoration: none;
 }
+
+/*:root,
+[data-bs-theme=light] {
+    --secondary-color: #CDF5FD;
+}
+
+:root,
+[data-bs-theme=dark] {
+    --secondary-color: #86A7FC;
+}
+
+.secondary-background {
+    background-color: var(--secondary-color)
+}*/

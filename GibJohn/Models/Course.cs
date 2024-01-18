@@ -11,6 +11,10 @@ namespace GibJohn.Models
     {
         [Key]
         public int Id{ get; set; }
+        [NotMapped]
+        [Display(Name = "Upload Image")]
+        public IFormFile? ImageFile { get; set; }
+        public string? ImagePath { get; set; }
         [Required]
         [StringLength(50, MinimumLength = 5)]
         public string Name { get; set; }

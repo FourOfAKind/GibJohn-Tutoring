@@ -16,11 +16,13 @@ namespace GibJohn.Controllers
 {
     public class CoursesController : Controller
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ApplicationDbContext _context;
 
-        public CoursesController(ApplicationDbContext context)
+        public CoursesController(IWebHostEnvironment webHostEnvironment, ApplicationDbContext context)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Courses
@@ -69,6 +71,13 @@ namespace GibJohn.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (course.ImageFile != null)
+                {
+                    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "uploaded");
+                    course.ImagePath = Guid.NewGuid().ToString() + "_" + course.ImageFile.FileName;
+                    string filePath = Path.Combine(uploadsFolder, course.ImagePath);
+                    course.ImageFile.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
                 _context.Add(course);
                 await _context.SaveChangesAsync();
                 // redirects to dashboard

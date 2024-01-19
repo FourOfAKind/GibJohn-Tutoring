@@ -24,7 +24,7 @@
         @foreach (var item in Model)
         {
             var existingRegistration = DbContext.Registration.FirstOrDefault(r => r.CourseId == @item.Id && r.UserId == userId);
-             string imagePath = string.IsNullOrEmpty(item.ImagePath) || !System.IO.File.Exists(webHostEnvironment.WebRootPath + "/assets/uploaded" + item.ImagePath) ? Url.Content("~/assets/static/placeholder.png") : Url.Content("~/assets/uploaded" + item.ImagePath);
+             string imagePath = string.IsNullOrEmpty(item.ImagePath) || !System.IO.File.Exists(webHostEnvironment.WebRootPath + "/assets/uploaded" + item.ImagePath) ? Url.Content("~/assets/static/placeholder.png") : Url.Content("~/assets/uploaded/" + item.ImagePath);
 
 
             <div class="col-lg-3 col-md-6 col-sm-12 spacing">

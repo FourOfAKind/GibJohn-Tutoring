@@ -2,6 +2,7 @@
 @using System.Security.Claims;
 @model IEnumerable<GibJohn.Models.Course>
 @inject ApplicationDbContext DbContext
+@inject IWebHostEnvironment webHostEnvironment;
 
 @{
     string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -22,10 +23,13 @@
             <!--Loop through every item and generate HTML elements with properties as attributes-->
             @foreach (var item in Model)
             {
+                var existingRegistration = DbContext.Registration.FirstOrDefault(r => r.CourseId == @item.Id && r.UserId == userId);
+                string imagePath = string.IsNullOrEmpty(item.ImagePath) || System.IO.File.Exists(webHostEnvironment.WebRootPath + "/assets/uploaded" + item.ImagePath) ? Url.Content("~/assets/static/placeholder.png") : Url.Content("~/assets/uploaded/" + item.ImagePath);
+
                 <div class="col-lg-3 col-md-6 col-sm-12 spacing">
                     <div class="card" style="width: 22rem;">
                         <!--Check if there's an image set, if not set it to spaceholder image-->
-                        <img class="card-img-top" src="@item.ImagePath" alt="Card image cap" style="height: 11rem;">
+                        <img class="card-img-top" src=@imagePath alt="Card image cap" style="height: 11rem;">
                         <div class="card-body">
                             <h5 class="card-title">@item.Name</h5>
                             <p class="card-text">@item.Description</p>

@@ -21,8 +21,6 @@ namespace GibJohn.Models
         [Required]
         [StringLength(250, MinimumLength = 5)]
         public string Description { get; set; }
-        [AllowNull]
-        public string? ImageURL { get; set; }
 
         public Course() { }
     }
